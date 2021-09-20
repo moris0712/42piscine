@@ -51,4 +51,4 @@ int main()
 // 0
 // 10
 
-// unsigned char을 안써도 잘 되는것같은데 혹시모르니 unsigned char로 바꿈 
+// unsigned char끼리 비교할때는 잘 되는데 unsigned char, char끼리 비교할때는 계산이 잘 안되는듯 그래서 unsigned char로 구현해야함
