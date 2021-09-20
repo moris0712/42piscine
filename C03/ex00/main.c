@@ -13,16 +13,19 @@ int main(){
 	char f[] = "abcef";
 	char g[] = "abcdz";
 	char h[] = "abcde";
+	char i[] = "";
 	// char g = '\0';
 	printf("%d\n",strcmp(a,b));
 	printf("%d\n",strcmp(c,d));
 	printf("%d\n",strcmp(e,f));
 	printf("%d\n",strcmp(g,h));
+	printf("%d\n",strcmp(i,i));
 
 	printf("\n%d\n",ft_strcmp(a,b));
 	printf("%d\n",ft_strcmp(c,d));
 	printf("%d\n",ft_strcmp(e,f));
 	printf("%d\n",ft_strcmp(g,h));
+	printf("%d\n",ft_strcmp(i,i));
 }
 
 
