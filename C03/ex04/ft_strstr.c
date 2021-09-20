@@ -14,12 +14,14 @@ char	*ft_strstr(char *str, char *to_find)
 {
 	int	s_i;
 	int	f_i;
+	int	find;
 
-	s_i = 0;
+	s_i = -1;
 	f_i = 0;
+	find = 0;
 	if (*(to_find + f_i) == '\0')
 		return (str);
-	while (*(str + s_i) != '\0')
+	while (*(str + ++s_i) != '\0')
 	{
 		if (*(str + s_i) == *(to_find + f_i))
 			*(str + f_i++) = *(str + s_i);
@@ -28,13 +30,11 @@ char	*ft_strstr(char *str, char *to_find)
 		if (*(to_find + f_i) == '\0')
 		{
 			while (*(str + s_i) != '\0')
-			{
-				s_i++;
-				*(str + f_i) = *(str + s_i);
-				f_i++;
-			}
+				*(str + f_i++) = *(str + ++s_i);
+			find = 1;
 		}
-		s_i++;
 	}
+	if (find == 0)
+		return (0);
 	return (str);
 }
