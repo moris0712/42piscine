@@ -14,7 +14,7 @@ int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
 	unsigned char	*u_s1;
 	unsigned char	*u_s2;
-	int				i;
+	unsigned int	i;
 
 	u_s1 = (unsigned char *)s1;
 	u_s2 = (unsigned char *)s2;
