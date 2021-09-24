@@ -112,17 +112,3 @@ void	*ft_print_memory(void *addr, unsigned int size)
 	}
 	return (addr);
 }
-
-
-// void *addr 현재 함수가 반환 할 코드 주소를 제공
-
-// 또한 void함수임에도 불구하고 return addr을 안해주면 자꾸 non void뭐시기 오류가 거슬리게 뜸
-
-// 받은 문자를 16개씩 나누어서 각각 변환
-
-// 0007ffeeea05920: 426f 6e6a 6f75 7220 6c65 7320 616d 6973 Bonjour les amis 형식으로 출력됨
-
-// 첫번째 부분은 16진수 부분은 put_addr , 두번째 4칸씩 16진수 부분은 put_line 세번째 문자열 부분은 put_char이다.
-// put_addr 은 addr을 long 타입으로 받아 16진수로 바꾸어 고대로 출력
-// put_line 은 addr을 char 타입으로 받아 16진수로 바꾸어 2개문자씩 나눠서 출력
-// put_char 는 출력할수있는 문자는 출력, 없으면 . 으로 대체

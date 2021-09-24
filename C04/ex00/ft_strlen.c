@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junyounp <junyounp@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/20 21:34:28 by junyounp          #+#    #+#             */
-/*   Updated: 2021/09/20 21:34:52 by junyounp         ###   ########.fr       */
+/*   Created: 2021/09/22 11:27:28 by junyounp          #+#    #+#             */
+/*   Updated: 2021/09/22 11:28:28 by junyounp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncat(char *dest, char *src, unsigned int nb)
+int	ft_strlen(char *str)
 {
-	unsigned int	d_i;
-	unsigned int	s_i;
+	int	i;
 
-	d_i = 0;
-	while (*(dest + d_i) != '\0')
-		d_i++;
-	s_i = 0;
-	while (*(src + s_i) != '\0' && s_i < nb)
-	{
-		dest[d_i + s_i] = src[s_i];
-		s_i++;
-	}
-	dest[d_i + s_i] = '\0';
-	return (dest);
+	i = 0;
+	while (*(str + i) != '\0')
+		i++;
+	return (i);
 }

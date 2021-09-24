@@ -1,29 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junyounp <junyounp@student.42seoul.kr      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/20 21:34:28 by junyounp          #+#    #+#             */
-/*   Updated: 2021/09/20 21:34:52 by junyounp         ###   ########.fr       */
+/*   Created: 2021/09/22 11:31:04 by junyounp          #+#    #+#             */
+/*   Updated: 2021/09/22 12:26:28 by junyounp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <unistd.h>
 
-char	*ft_strncat(char *dest, char *src, unsigned int nb)
+void	except(unsigned int *n, int *nb)
 {
-	unsigned int	d_i;
-	unsigned int	s_i;
-
-	d_i = 0;
-	while (*(dest + d_i) != '\0')
-		d_i++;
-	s_i = 0;
-	while (*(src + s_i) != '\0' && s_i < nb)
+	if (*nb < 0)
 	{
-		dest[d_i + s_i] = src[s_i];
-		s_i++;
+		write(1, "-", 1);
+		*n = (*nb) * -1;
 	}
-	dest[d_i + s_i] = '\0';
-	return (dest);
+	else if (*nb == 0)
+		write(1, "0", 1);
+	else
+		*n = *nb;
+}
+
+void	ft_putnbr(int nb)
+{
+	int				str_len;
+	char			str[10];
+	unsigned int	n;
+
+	except(&n, &nb);
+	str_len = 0;
+	while (n > 0)
+	{
+		str[str_len++] = n % 10 + 48;
+		n /= 10;
+	}
+	while (--str_len >= 0)
+		write(1, &str[str_len], 1);
 }
