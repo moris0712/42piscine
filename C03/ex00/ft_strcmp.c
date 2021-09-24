@@ -22,8 +22,5 @@ int	ft_strcmp(char *s1, char *s2)
 	while (*(u_s1 + i) == *(u_s2 + i) && \
 		(*(u_s1 + i) != '\0' || *(u_s2 + i) != '\0'))
 		i++;
-	if (*(u_s1 + i) > *(u_s2 + i) || *(u_s2 + i) > *(u_s1 + i))
-		return (*(u_s1 + i) - *(u_s2 + i));
-	else
-		return (0);
+	return (*(u_s1 + i) - *(u_s2 + i));
 }
