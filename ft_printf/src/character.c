@@ -30,7 +30,7 @@ int	print_string(va_list ptr, int len)
 	if (word == NULL)
 	{
 		write(1, "(null)", 6);
-		return (6);
+		return (len + 6);
 	}
 	while (*word)
 	{

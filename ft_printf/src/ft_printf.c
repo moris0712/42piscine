@@ -26,6 +26,8 @@ char	*return_notation(size_t ptr, char *base, int notation)
 		index++;
 	}
 	result = (char *) malloc((index + 1) * sizeof(char));
+	if (result == NULL)
+		return (NULL);
 	result[index] = '\0';
 	index--;
 	while (ptr != 0)
@@ -54,9 +56,14 @@ int	find_format(char args, va_list arg_ptr, int len)
 	else if (args == 'X')
 		len = print_hexadecimal(arg_ptr, len, 'X');
 	else if (args == '%')
+	{
 		write(1, "%", 1);
+		len = len + 1;
+	}
 	else
 		write(1, &args, 1);
+	if (len == -1)
+		return (-1);
 	return (len);
 }
 
@@ -78,6 +85,8 @@ int	ft_printf(const char *args, ...)
 		{
 			args++;
 			len = find_format(*args, arg_ptr, len);
+			if (len == -1)
+				return (0);
 		}
 		args++;
 	}

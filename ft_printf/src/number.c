@@ -23,13 +23,16 @@ int	print_pointer(va_list ptr, int len)
 	if (point == 0)
 	{
 		write(1, "0", 1);
-		return (1);
+		return (len + 3);
 	}
 	addr = return_notation(point, g_16lbase, 16);
+	if (addr == NULL)
+		return (-1);
 	length = ft_strlen(addr);
 	write(1, addr, length);
 	len += 2;
 	len += length;
+	free(addr);
 	return (len);
 }
 
@@ -41,23 +44,19 @@ int	print_int(va_list ptr, int len)
 	char			*decimal;
 
 	integer = va_arg(ptr, int);
-	if (integer < 0)
-	{
-		len++;
-		write(1, "-", 1);
-		temp = integer * (-1);
-	}
-	else if (integer > 0)
-		temp = integer;
-	else
+	temp = printf_int2(integer, &len);
+	if (temp == 0)
 	{
 		write(1, "0", 1);
 		return (len + 1);
 	}
 	decimal = return_notation(temp, g_10base, 10);
+	if (decimal == NULL)
+		return (-1);
 	length = ft_strlen(decimal);
 	write(1, decimal, length);
 	len += length;
+	free(decimal);
 	return (len);
 }
 
@@ -74,9 +73,12 @@ int	print_unsigned_int(va_list ptr, int len)
 		return (len + 1);
 	}
 	decimal = return_notation(uinteger, g_10base, 10);
+	if (decimal == NULL)
+		return (-1);
 	length = ft_strlen(decimal);
 	write(1, decimal, length);
 	len += length;
+	free(decimal);
 	return (len);
 }
 
@@ -94,10 +96,13 @@ int	print_hexadecimal(va_list ptr, int len, char c)
 	}
 	if (c == 'x')
 		addr = return_notation(hexa, g_16lbase, 16);
-	else if (c == 'X')
+	if (c == 'X')
 		addr = return_notation(hexa, g_16ubase, 16);
+	if (addr == NULL)
+		return (-1);
 	length = ft_strlen(addr);
 	write(1, addr, length);
 	len += length;
+	free(addr);
 	return (len);
 }
